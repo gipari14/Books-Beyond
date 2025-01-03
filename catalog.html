@@ -205,39 +205,37 @@
         <p>&copy; 2024 Books & Beyond. All rights reserved.</p>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const bookForm = document.getElementById('bookForm');
-            const bookTable = document.getElementById('bookTable').getElementsByTagName('tbody')[0];
+   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const bookForm = document.getElementById('bookForm');
+        const bookTable = document.getElementById('bookTable').getElementsByTagName('tbody')[0];
 
-            bookForm.addEventListener('submit', function(event) {
-                event.preventDefault();
+        bookForm.addEventListener('submit', function(event) {
+            event.preventDefault();
 
-               
-                const title = document.getElementById('bookTitle').value;
-                const author = document.getElementById('bookAuthor').value;
-                const genre = document.getElementById('bookGenre').value;
+           
+            const title = document.getElementById('bookTitle').value;
+            const author = document.getElementById('bookAuthor').value;
+            const genre = document.getElementById('bookGenre').value;
 
-                
-                const newRow = bookTable.insertRow();
-                newRow.innerHTML = `
-                    <td>${title}</td>
-                    <td>${author}</td>
-                    <td>${genre}</td>
-                    <td><button class="deleteBtn">Delete</button></td>
-                `;
+            
+            const newRow = bookTable.insertRow();
+            newRow.innerHTML = `
+                <td>${title}</td>
+                <td>${author}</td>
+                <td>${genre}</td>
+                <td><button class="deleteBtn">Delete</button></td>
+            `;
 
-                
-                document.getElementById('bookTitle').value = '';
-                document.getElementById('bookAuthor').value = '';
-                document.getElementById('bookGenre').value = '';
+            
+            document.getElementById('bookTitle').value = '';
+            document.getElementById('bookAuthor').value = '';
+            document.getElementById('bookGenre').value = '';
 
-                
-                newRow.querySelector('.deleteBtn').addEventListener('click', function() {
-                    bookTable.deleteRow(newRow.rowIndex - 1);
-                });
+            
+            newRow.querySelector('.deleteBtn').addEventListener('click', function() {
+                bookTable.deleteRow(newRow.rowIndex - 1);
             });
         });
-    </script>
-</body>
-</html>
+    });
+</script>
