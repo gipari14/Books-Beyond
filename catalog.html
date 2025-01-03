@@ -214,27 +214,37 @@
         bookForm.addEventListener('submit', function(event) {
             event.preventDefault();
 
-           
             const title = document.getElementById('bookTitle').value;
             const author = document.getElementById('bookAuthor').value;
             const genre = document.getElementById('bookGenre').value;
 
-            
-            const newRow = bookTable.insertRow();
-            newRow.innerHTML = `
-                <td>${title}</td>
-                <td>${author}</td>
-                <td>${genre}</td>
-                <td><button class="deleteBtn">Delete</button></td>
-            `;
+            // Validasi input
+            if (!title || !author || !genre) {
+                alert('Please fill in all fields.');
+                return;
+            }
 
-            
+            const newRow = bookTable.insertRow();
+            const titleCell = newRow.insertCell(0);
+            const authorCell = newRow.insertCell(1);
+            const genreCell = newRow.insertCell(2);
+            const deleteCell = newRow.insertCell(3);
+
+            titleCell.textContent = title;
+            authorCell.textContent = author;
+            genreCell.textContent = genre;
+
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = 'Delete';
+            deleteBtn.className = 'deleteBtn';
+            deleteCell.appendChild(deleteBtn);
+
+            // Kosongkan input setelah menambahkan
             document.getElementById('bookTitle').value = '';
             document.getElementById('bookAuthor').value = '';
             document.getElementById('bookGenre').value = '';
 
-            
-            newRow.querySelector('.deleteBtn').addEventListener('click', function() {
+            deleteBtn.addEventListener('click', function() {
                 bookTable.deleteRow(newRow.rowIndex - 1);
             });
         });
