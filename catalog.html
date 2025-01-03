@@ -213,12 +213,12 @@
             bookForm.addEventListener('submit', function(event) {
                 event.preventDefault();
 
-                // Get the values from the input fields
+               
                 const title = document.getElementById('bookTitle').value;
                 const author = document.getElementById('bookAuthor').value;
                 const genre = document.getElementById('bookGenre').value;
 
-                // Create a new row for the book
+                
                 const newRow = bookTable.insertRow();
                 newRow.innerHTML = `
                     <td>${title}</td>
@@ -227,12 +227,12 @@
                     <td><button class="deleteBtn">Delete</button></td>
                 `;
 
-                // Clear the input fields
+                
                 document.getElementById('bookTitle').value = '';
                 document.getElementById('bookAuthor').value = '';
                 document.getElementById('bookGenre').value = '';
 
-                // Add event listener to the delete button
+                
                 newRow.querySelector('.deleteBtn').addEventListener('click', function() {
                     bookTable.deleteRow(newRow.rowIndex - 1);
                 });
